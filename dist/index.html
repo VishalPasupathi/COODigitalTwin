@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAB | COO Digital Twin</title>
+    <link rel="manifest" href="manifest.json" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Theme specific base overrides - STRICT CONTRAST */
+        
+        body.light {
+            background-color: #f8fafc;
+            color: #000000 !important;
+        }
+        
+        body.dark {
+            background-color: #030712;
+            color: #ffffff !important;
+        }
+        
+        /* Enforce absolute color inheritance */
+        
+        body.light *:not(.recharts-legend-item-text):not(.recharts-default-legend):not(button):not(a) {
+            color: #000000 !important;
+        }
+        
+        body.dark *:not(.recharts-legend-item-text):not(.recharts-default-legend):not(button):not(a) {
+            color: #ffffff !important;
+        }
+        
+        /* Input and Dropdown styling for dark mode */
+        
+        body.dark input,
+        body.dark select, 
+        body.dark option {
+            background-color: #0f172a !important;
+            color: #ffffff !important;
+            border-color: #334155 !important;
+        }
+        
+        body.light input,
+        body.light select, 
+        body.light option {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            border-color: #e2e8f0 !important;
+        }
+        
+        /* Glass Panel Adjustments */
+        
+        body.light .glass-panel {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        
+        body.dark .glass-panel {
+            background: rgba(17, 24, 39, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Definition Tooltips */
+        
+        .info-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.2s ease-out;
+            pointer-events: none;
+            z-index: 9999 !important;
+            position: absolute;
+            top: 100%;
+            margin-top: 0.75rem;
+            width: 18rem;
+            padding: 1.25rem;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        }
+        
+        .has-tooltip {
+            position: relative;
+        }
+        
+        .has-tooltip:hover .info-tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        body.light .info-tooltip {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+        }
+        
+        body.dark .info-tooltip {
+            background: #1e293b;
+            border: 1px solid #475569;
+        }
+        
+        .tooltip-left { left: 0; }
+        
+        .tooltip-right { right: 0; }
+        
+        /* Recharts Specific Styling */
+        
+        .recharts-default-tooltip {
+            border-radius: 8px !important;
+            padding: 10px !important;
+            border: none !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+            z-index: 10000 !important;
+        }
+        
+        body.light .recharts-default-tooltip {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+        
+        body.dark .recharts-default-tooltip {
+            background-color: #0f172a !important;
+            color: #ffffff !important;
+        }
+        
+        /* PDF Export classes */
+        
+        #pdf-export-container {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            width: 800px;
+        }
+        
+        .pdf-page {
+            width: 800px;
+            height: 1130px;
+            padding: 40px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            color: black;
+            overflow: hidden;
+        }
+        
+        .recharts-legend-item-text {
+            color: inherit !important;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Suppress horizontal scroll globally in simulator */
+        
+        .simulator-main {
+            overflow-x: hidden;
+        }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "jspdf": "https://esm.sh/jspdf@^2.5.1",
+    "html2canvas": "https://esm.sh/html2canvas@^1.4.1"
+  }
+}
+</script>
+  <script type="module" crossorigin src="./assets/index-oU6r7KEm.js"></script>
+</head>
+<body class="dark">
+    <div id="root"></div>
+</body>
+</html>
